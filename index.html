@@ -1,84 +1,345 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta charset="UTF-8" />
-  <meta name="description" content="HumanlyAI provides human feedback, RLHF evaluation, and AI safety red-teaming for LLMs, copilots, and regulated AI systems." />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HumanlyAI | Human Feedback & AI Safety Evaluation (RLHF)</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <title>HumanlyAI — Human Evaluation & Safety Services for RLHF and GenAI</title>
+  <meta name="description" content="HumanlyAI provides certified human evaluators for RLHF preference data, AI safety evaluation, hallucination detection, and compliance-ready model oversight. Fast pilots. Defensible rubrics." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://humanlyai.us/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="HumanlyAI — Human Evaluation for Safer, More Reliable AI" />
+  <meta property="og:description" content="Certified RLHF + safety evaluation services: preference ranking, hallucination detection, and compliance-ready oversight for GenAI teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://humanlyai.us/" />
+  <!-- Replace with your social preview image -->
+  <meta property="og:image" content="https://humanlyai.us/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="HumanlyAI — Human Evaluation for Safer AI" />
+  <meta name="twitter:description" content="Certified RLHF + safety evaluation services: preference ranking, hallucination detection, and compliance-ready oversight." />
+  <meta name="twitter:image" content="https://humanlyai.us/og-image.png" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- Minimal styling (works on GitHub Pages). Replace with your own CSS/Tailwind later. -->
   <style>
-    body {
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-      background-color: #0E0E12;
-      color: #ffffff;
+    :root{
+      --bg:#0E0E12; --card:#14141B; --text:#FFFFFF; --muted:#9A9DAA; --accent:#5CF2FF;
+      --border: rgba(154,157,170,.22);
     }
-    .logo {
-      width: 100%;
-      max-width: 180px; /* prevents it from getting too large */
-      height: auto;
-      margin-bottom: 20px;
-    }
-    header {
-      text-align: center;
-      padding: 80px 20px 40px;
-    }
-    header h1 {
-      font-size: 48px;
-      color: #5CF2FF;
-      margin-bottom: 10px;
-    }
-    header p {
-      font-size: 20px;
-      color: #9A9DAA;
-      margin: 0;
-    }
-    section {
-      padding: 40px 20px;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-    section h2 {
-      color: #5CF2FF;
-      font-size: 28px;
-      margin-bottom: 16px;
-    }
-    section p {
-      font-size: 18px;
-      line-height: 1.6;
-    }
-    footer {
-      text-align: center;
-      padding: 40px 20px;
-      color: #9A9DAA;
-      font-size: 14px;
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.2px}
+    .badge{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:999px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer}
+    .btn.primary{background:var(--accent);color:#001014;border-color:transparent;font-weight:700}
+    .btn:hover{opacity:.92}
+    .hero{padding:44px 0 18px;display:grid;grid-template-columns:1.3fr .7fr;gap:24px;align-items:start}
+    .h1{font-size:44px;line-height:1.08;margin:0 0 12px}
+    .sub{color:var(--muted);font-size:18px;margin:0 0 18px;max-width:52ch}
+    .ctaRow{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .kicker{color:var(--accent);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin:0 0 10px}
+    h2{font-size:26px;margin:0 0 10px}
+    p{margin:0 0 12px}
+    ul{margin:10px 0 0 20px;color:var(--muted)}
+    li{margin:6px 0}
+    .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:18px 0}
+    .pill{display:inline-flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:999px}
+    .foot{padding:26px 0;color:var(--muted);font-size:13px}
+    .small{font-size:13px;color:var(--muted)}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr; padding-top:26px}
+      .grid3,.grid2{grid-template-columns:1fr}
+      .h1{font-size:36px}
     }
   </style>
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "HumanlyAI",
+    "url": "https://humanlyai.us",
+    "email": "founder@humanlyai.us",
+    "description": "Certified human evaluation services for RLHF, safety scoring, hallucination detection, and alignment-quality assessment for generative AI systems.",
+    "sameAs": []
+  }
+  </script>
 </head>
+
 <body>
-  <header>
-    <img src="logo.png" alt="Humanly.ai Logo" class="logo" />
-    <h1>Human Intelligence for Safer AI</h1>
+  <header class="container">
+    <div class="nav">
+      <div class="logo">
+        <!-- Replace with your logo.png -->
+        <span style="display:inline-flex;width:28px;height:28px;border-radius:8px;background:rgba(92,242,255,.18);border:1px solid rgba(92,242,255,.35)"></span>
+        <span>HumanlyAI</span>
+        <span class="badge">Human Evaluation • RLHF • AI Safety</span>
+      </div>
+      <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap">
+        <a class="btn" href="#services">Services</a>
+        <a class="btn" href="#how">How it Works</a>
+        <a class="btn primary" href="#contact">Request a Pilot</a>
+      </div>
+    </div>
   </header>
 
-  <section>
-    <h2>About Us</h2>
-    <p>HumanlyAI is building the most trusted human feedback engine for safe, aligned, and high-performing AI systems. We specialize in RLHF, red-teaming, and safety evaluations for frontier model developers and enterprise LLM deployers.</p>
-  </section>
+  <main class="container">
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <p class="kicker">Human evaluation infrastructure</p>
+        <h1 class="h1">Human Evaluation for Safer, More Reliable AI</h1>
+        <p class="sub">
+          HumanlyAI provides <strong>certified evaluators</strong> for RLHF preference data, safety assessment,
+          hallucination detection, and compliance-ready model oversight — so your systems don’t just sound right,
+          they <em>are</em> right.
+        </p>
 
-  <section>
-    <h2>What We Do</h2>
-    <p>From data labeling, pairwise ranking and factuality scoring to multilingual safety audits and bias detection, our trained evaluator workforce powers reliable oversight pipelines. We help AI developers and regulators ensure their models are responsible, explainable, and compliant.</p>
-  </section>
+        <div class="pill">
+          <span class="tag">RLHF Preference Ranking</span>
+          <span class="tag">Safety (Safe / Borderline / Unsafe)</span>
+          <span class="tag">Hallucination Detection</span>
+          <span class="tag">Gold Datasets & Calibration</span>
+        </div>
 
-  <section>
-    <h2>Contact</h2>
-    <p>Email us at <a href="mailto:founder@humanlyai.us" style="color: #5CF2FF;">founder@humanlyai.us</a> to discuss how we can help evaluate or align your models.</p>
-  </section>
+        <div class="ctaRow">
+          <a class="btn primary" href="#contact">Request Evaluation Support</a>
+          <a class="btn" href="#how">See the Workflow</a>
+        </div>
 
-  <footer>
-    &copy; 2025 HumanlyAI — All rights reserved.
-  </footer>
+        <p class="small" style="margin-top:12px">
+          Typical pilot turnaround: <strong>7–14 days</strong>. Ongoing pods available for continuous evaluation.
+        </p>
+      </div>
+
+      <div class="card">
+        <p class="kicker">Who this is for</p>
+        <p><strong>AI product teams</strong> shipping copilots and assistants</p>
+        <p><strong>Enterprise GenAI teams</strong> needing reliability + auditability</p>
+        <p><strong>Model builders</strong> running RLHF or safety eval cycles</p>
+        <div class="divider"></div>
+        <p class="small">
+          If your model updates weekly, your evaluation pipeline needs to keep up — with consistent human judgment.
+        </p>
+      </div>
+    </section>
+
+    <!-- WHY -->
+    <section class="card" id="why" style="margin-top:14px">
+      <p class="kicker">Why human evaluation</p>
+      <h2>AI capability is accelerating faster than human oversight</h2>
+      <p class="muted">
+        Modern LLMs are fluent and confident — yet still hallucinate, overclaim, and sometimes produce harmful guidance.
+        Automated checks help, but teams still need <strong>defensible human judgment</strong> to catch safety failures and
+        reliability gaps before users do.
+      </p>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card">
+          <p><strong>Hallucinations & false authority</strong></p>
+          <p class="muted">Confident answers can be wrong, fabricated, or misleading — especially in high-stakes domains.</p>
+        </div>
+        <div class="card">
+          <p><strong>Safety + reputational risk</strong></p>
+          <p class="muted">Unsafe outputs can create user harm, legal exposure, or immediate trust loss.</p>
+        </div>
+        <div class="card">
+          <p><strong>Scaling RLHF is hard</strong></p>
+          <p class="muted">Reliable evaluators are difficult to recruit, train, calibrate, and maintain over time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" style="margin-top:18px">
+      <p class="kicker">Services</p>
+      <h2>What HumanlyAI provides</h2>
+      <p class="muted">Choose one-off evaluations, pilots, or dedicated evaluator pods.</p>
+
+      <div class="grid2" style="margin-top:12px">
+        <div class="card">
+          <p><strong>RLHF Preference Data</strong></p>
+          <ul>
+            <li>Pairwise preference ranking</li>
+            <li>Structured rubrics + rationales</li>
+            <li>Model comparison and regression checks</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p><strong>AI Safety Evaluation</strong></p>
+          <ul>
+            <li>Safe / Borderline / Unsafe scoring</li>
+            <li>Refusal quality & policy adherence</li>
+            <li>Harm analysis for realistic user impact</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p><strong>Hallucination Detection</strong></p>
+          <ul>
+            <li>Fabrication flags (facts, citations, numbers)</li>
+            <li>Overconfidence & false precision detection</li>
+            <li>Factual accuracy scoring (0–5)</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <p><strong>Gold Datasets & Calibration</strong></p>
+          <ul>
+            <li>Create gold tasks and ground truth</li>
+            <li>Agreement tracking + drift detection</li>
+            <li>Ongoing evaluator recalibration</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="card" id="how" style="margin-top:18px">
+      <p class="kicker">How it works</p>
+      <h2>End-to-end evaluation pipeline</h2>
+      <div class="grid2" style="margin-top:12px">
+        <div class="card">
+          <p><strong>1) Scope & Inputs</strong></p>
+          <p class="muted">You share prompts, model outputs, and evaluation goals (safety, accuracy, tone, policy).</p>
+          <p class="small">Inputs can be CSV/JSON exports or platform integrations.</p>
+        </div>
+        <div class="card">
+          <p><strong>2) Evaluate with Rubrics</strong></p>
+          <p class="muted">Certified evaluators score each response using standardized dimensions and definitions.</p>
+          <p class="small">Safety, hallucinations, accuracy, tone, overall quality.</p>
+        </div>
+        <div class="card">
+          <p><strong>3) Quality Control</strong></p>
+          <p class="muted">We audit work with gold datasets, agreement thresholds, and reviewer checks.</p>
+          <p class="small">Consistency matters more than speed.</p>
+        </div>
+        <div class="card">
+          <p><strong>4) Deliver Results</strong></p>
+          <p class="muted">You receive structured scores, findings, and recommended next actions.</p>
+          <p class="small">Ready to feed into RLHF training loops or safety reporting.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- DIFFERENTIATION -->
+    <section id="differentiation" style="margin-top:18px">
+      <p class="kicker">Why HumanlyAI</p>
+      <h2>Trained + certified evaluators — not crowd work</h2>
+
+      <div class="grid3" style="margin-top:12px">
+        <div class="card">
+          <p><strong>Certification gate</strong></p>
+          <p class="muted">Evaluators pass training + quiz + gold dataset agreement thresholds before client work.</p>
+        </div>
+        <div class="card">
+          <p><strong>Safety-first scoring</strong></p>
+          <p class="muted">Clear definitions for Safe / Borderline / Unsafe and strict “no Unsafe → Safe” policy.</p>
+        </div>
+        <div class="card">
+          <p><strong>Calibrated quality</strong></p>
+          <p class="muted">Gold data, QA review, and ongoing recalibration to keep evaluations consistent over time.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="card" id="pricing" style="margin-top:18px">
+      <p class="kicker">Engagement model</p>
+      <h2>Simple pilots, then scale</h2>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card">
+          <p><strong>Pilot</strong></p>
+          <p class="muted">Validate rubric + workflow on a small set.</p>
+          <p class="small">Best for first-time evaluation programs.</p>
+        </div>
+        <div class="card">
+          <p><strong>Subscription</strong></p>
+          <p class="muted">Monthly evaluation cycles for evolving models.</p>
+          <p class="small">Best for weekly model updates.</p>
+        </div>
+        <div class="card">
+          <p><strong>Dedicated Pods</strong></p>
+          <p class="muted">Retained evaluators + QA lead for your team.</p>
+          <p class="small">Best for enterprise scale + continuity.</p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:12px">
+        Want exact pricing? It depends on volume, domain complexity, and QA depth. We’ll propose a pilot scope in one call.
+      </p>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-top:18px">
+      <p class="kicker">FAQ</p>
+      <h2>Common questions</h2>
+      <div class="grid2" style="margin-top:12px">
+        <div class="card">
+          <p><strong>Do evaluators need to be domain experts (lawyers, doctors)?</strong></p>
+          <p class="muted">
+            Not always. For most tasks, we train evaluators to judge risk, credibility, and rubric compliance. For specialized
+            domains, we can add domain-trained evaluators or an expert QA layer.
+          </p>
+        </div>
+        <div class="card">
+          <p><strong>Can you work with our existing tooling?</strong></p>
+          <p class="muted">
+            Yes. We can deliver structured outputs (JSON/CSV) or operate within evaluation platforms, depending on your workflow.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="card" id="contact" style="margin-top:18px">
+      <p class="kicker">Contact</p>
+      <h2>Request a pilot</h2>
+      <p class="muted">
+        Email us with a short description of your use case (model type, domain, evaluation goals, and timeline). We’ll respond with a pilot plan.
+      </p>
+      <div class="ctaRow">
+        <a class="btn primary" href="mailto:founder@humanlyai.us?subject=HumanlyAI%20Pilot%20Request&body=Hi%20HumanlyAI%2C%0A%0AUse%20case%3A%20%0ADomain%3A%20%0AEvaluation%20needs%3A%20(RLHF%2C%20safety%2C%20hallucinations%2C%20etc.)%0AVolume%3A%20%0ATimeline%3A%20%0A%0AThanks%2C%0A">
+          Email Founder
+        </a>
+        <!-- Optional: replace with Calendly -->
+        <a class="btn" href="#pricing">See engagement options</a>
+      </div>
+      <p class="small" style="margin-top:12px">
+        Prefer a call link? Add Calendly and swap the button above.
+      </p>
+    </section>
+
+    <footer class="foot">
+      <div class="divider"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="y"></span> HumanlyAI. All rights reserved.</div>
+        <div>
+          <a href="/privacy.html">Privacy</a> ·
+          <a href="/terms.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
+
