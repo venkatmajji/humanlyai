@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HumanlyAI Blog — RLHF, AI Safety, and Human Evaluation</title>
+  <meta name="description" content="HumanlyAI Blog: practical insights on RLHF, AI safety evaluation, hallucination detection, and building reliable human evaluation systems for GenAI." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://humanlyai.us/blog/" />
+
+  <meta property="og:title" content="HumanlyAI Blog" />
+  <meta property="og:description" content="RLHF, AI safety, hallucination detection, and human evaluation playbooks for GenAI teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://humanlyai.us/blog/" />
+  <meta property="og:image" content="https://humanlyai.us/og-image.png" />
+
+  <style>
+    :root{
+      --bg:#0E0E12; --card:#14141B; --text:#FFFFFF; --muted:#9A9DAA; --accent:#5CF2FF;
+      --border: rgba(154,157,170,.22);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:12px;flex-wrap:wrap}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700;letter-spacing:.2px}
+    .logo img{height:32px;width:auto;display:block}
+    .badge{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:999px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer}
+    .btn.primary{background:var(--accent);color:#001014;border-color:transparent;font-weight:700}
+    .btn:hover{opacity:.92}
+    .h1{font-size:40px;line-height:1.12;margin:18px 0 8px}
+    .sub{color:var(--muted);font-size:16px;margin:0 0 18px;max-width:70ch}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}
+    .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:10px}
+    .tag{font-size:12px;border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:999px}
+    .divider{height:1px;background:var(--border);margin:18px 0}
+    .foot{padding:26px 0;color:var(--muted);font-size:13px}
+    @media (max-width:900px){ .grid{grid-template-columns:1fr} .h1{font-size:34px} }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Blog",
+    "name":"HumanlyAI Blog",
+    "url":"https://humanlyai.us/blog/",
+    "publisher":{
+      "@type":"Organization",
+      "name":"HumanlyAI",
+      "url":"https://humanlyai.us"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <header class="container">
+    <div class="nav">
+      <a class="logo" href="/" aria-label="HumanlyAI Home">
+        <!-- Put your logo at /logo.png or update path -->
+        <img src="/logo.png" alt="HumanlyAI logo" />
+        <span class="badge">RLHF • AI Safety • Human Evaluation</span>
+      </a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/#services">Services</a>
+        <a class="btn primary" href="mailto:founder@humanlyai.us?subject=HumanlyAI%20Pilot%20Request">Request a Pilot</a>
+      </div>
+    </div>
+
+    <h1 class="h1">HumanlyAI Blog</h1>
+    <p class="sub">
+      Practical insights on RLHF, AI safety evaluation, hallucination detection, and building reliable human evaluation systems for GenAI teams.
+      Clear, non-hype, and designed for builders.
+    </p>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <span class="tag">RLHF</span>
+      <span class="tag">AI Safety</span>
+      <span class="tag">Hallucinations</span>
+      <span class="tag">Human Evaluation</span>
+    </div>
+
+    <div class="divider"></div>
+  </header>
+
+  <main class="container">
+    <div class="grid">
+      <!-- Post card #1 -->
+      <article class="card">
+        <h2 style="margin:0 0 6px;font-size:20px;line-height:1.25">
+          <a href="/blog/fluent-ai-dangerous.html">Why Fluent AI Is Still Dangerous</a>
+        </h2>
+        <p style="margin:0;color:var(--muted)">
+          Fluent, confident AI can still be wrong, unsafe, and misleading. Here’s why hallucinations are hard to catch and why human evaluation still matters.
+        </p>
+        <div class="meta">
+          <span>6–8 min read</span>
+          <span>•</span>
+          <span>AI Safety</span>
+          <span>•</span>
+          <span>LLM Hallucinations</span>
+        </div>
+      </article>
+
+      <!-- Post card #2 -->
+      <article class="card">
+        <h2 style="margin:0 0 6px;font-size:20px;line-height:1.25">
+          <a href="/blog/rlhf-done-wrong.html">What Is RLHF — And Why Most Teams Do It Wrong</a>
+        </h2>
+        <p style="margin:0;color:var(--muted)">
+          RLHF is a human judgment problem, not a labeling problem. The common failure modes and what “good RLHF” looks like in practice.
+        </p>
+        <div class="meta">
+          <span>7–9 min read</span>
+          <span>•</span>
+          <span>RLHF</span>
+          <span>•</span>
+          <span>Human Evaluation</span>
+        </div>
+      </article>
+
+      <!-- Placeholder for future posts -->
+      <article class="card">
+        <h2 style="margin:0 0 6px;font-size:20px;line-height:1.25">
+          <a href="#">Coming soon: Gold Datasets & Calibration</a>
+        </h2>
+        <p style="margin:0;color:var(--muted)">
+          A practical guide to gold tasks, agreement thresholds, drift detection, and how to build evaluator consistency.
+        </p>
+        <div class="meta">
+          <span>Coming soon</span>
+          <span>•</span>
+          <span>Evaluation Ops</span>
+        </div>
+      </article>
+    </div>
+
+    <section class="card" style="margin-top:16px">
+      <h2 style="margin:0 0 8px">Want help evaluating your model?</h2>
+      <p class="muted" style="margin:0 0 12px">
+        If you’re shipping a copilot or assistant and need reliable human evaluation (RLHF, safety, hallucinations), we can run a fast pilot and deliver structured results.
+      </p>
+      <a class="btn primary" href="mailto:founder@humanlyai.us?subject=HumanlyAI%20Pilot%20Request&body=Hi%20HumanlyAI%2C%0A%0AUse%20case%3A%0ADomain%3A%0AEvaluation%20needs%3A%20(RLHF%2C%20safety%2C%20hallucinations)%0AVolume%3A%0ATimeline%3A%0A%0AThanks%2C%0A">Request a Pilot</a>
+    </section>
+
+    <footer class="foot">
+      <div class="divider"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="y"></span> HumanlyAI</div>
+        <div>
+          <a href="/privacy.html">Privacy</a> ·
+          <a href="/terms.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
