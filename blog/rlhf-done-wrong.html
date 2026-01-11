@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What Is RLHF — And Why Most Teams Do It Wrong | HumanlyAI Blog</title>
+  <meta name="description" content="RLHF is a human judgment problem, not a labeling problem. Learn the common failure modes and what high-quality RLHF looks like in practice." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://humanlyai.us/blog/rlhf-done-wrong.html" />
+
+  <meta property="og:title" content="What Is RLHF — And Why Most Teams Do It Wrong" />
+  <meta property="og:description" content="RLHF is a human judgment problem, not a labeling problem. The common failure modes and what good RLHF looks like in practice." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://humanlyai.us/blog/rlhf-done-wrong.html" />
+  <meta property="og:image" content="https://humanlyai.us/og-image.png" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="What Is RLHF — And Why Most Teams Do It Wrong" />
+  <meta name="twitter:description" content="RLHF is a human judgment problem, not a labeling problem. The common failure modes and what good RLHF looks like in practice." />
+  <meta name="twitter:image" content="https://humanlyai.us/og-image.png" />
+
+  <style>
+    :root{--bg:#0E0E12;--card:#14141B;--text:#FFFFFF;--muted:#9A9DAA;--accent:#5CF2FF;--border:rgba(154,157,170,.22);}
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.65}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:860px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700}
+    .logo img{height:32px;width:auto;display:block}
+    .badge{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:999px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text)}
+    .btn.primary{background:var(--accent);color:#001014;border-color:transparent;font-weight:700}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}
+    h1{font-size:40px;line-height:1.15;margin:18px 0 6px}
+    h2{font-size:22px;margin:22px 0 8px}
+    p{color:var(--muted);margin:0 0 14px}
+    .meta{display:flex;gap:10px;align-items:center;flex-wrap:wrap;color:var(--muted);font-size:13px;margin-top:10px}
+    .divider{height:1px;background:var(--border);margin:18px 0}
+    .foot{padding:26px 0;color:var(--muted);font-size:13px}
+    .content p{color:var(--muted)}
+    .content strong{color:var(--text)}
+    ul{margin:8px 0 14px 20px;color:var(--muted)}
+    li{margin:6px 0}
+    @media (max-width:700px){ h1{font-size:32px} }
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"BlogPosting",
+    "headline":"What Is RLHF — And Why Most Teams Do It Wrong",
+    "description":"RLHF is a human judgment problem, not a labeling problem. Learn the common failure modes and what high-quality RLHF looks like in practice.",
+    "author":{"@type":"Organization","name":"HumanlyAI"},
+    "publisher":{"@type":"Organization","name":"HumanlyAI","url":"https://humanlyai.us"},
+    "mainEntityOfPage":{"@type":"WebPage","@id":"https://humanlyai.us/blog/rlhf-done-wrong.html"}
+  }
+  </script>
+</head>
+
+<body>
+  <header class="container">
+    <div class="nav">
+      <a class="logo" href="/" aria-label="HumanlyAI Home">
+        <img src="/logo.png" alt="HumanlyAI logo" />
+        <span class="badge">Blog</span>
+      </a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="/blog/">All Posts</a>
+        <a class="btn primary" href="mailto:founder@humanlyai.us?subject=HumanlyAI%20Pilot%20Request">Request a Pilot</a>
+      </div>
+    </div>
+    <div class="divider"></div>
+  </header>
+
+  <main class="container">
+    <article class="card">
+      <h1>What Is RLHF — And Why Most Teams Do It Wrong</h1>
+      <div class="meta">
+        <span>2026-01-10</span><span>•</span><span>7–9 min read</span><span>•</span><span>RLHF</span>
+      </div>
+      <div class="divider"></div>
+
+      <div class="content">
+        <p>Reinforcement Learning from Human Feedback (RLHF) has become a cornerstone of modern AI development. But despite its importance, many teams misunderstand what RLHF actually requires — and that misunderstanding quietly undermines model quality.</p>
+
+        <h2>What RLHF is supposed to do</h2>
+        <p>At its core, RLHF helps models:</p>
+        <ul>
+          <li>Align with human preferences</li>
+          <li>Avoid unsafe or undesirable outputs</li>
+          <li>Improve response quality beyond raw likelihood</li>
+        </ul>
+        <p>The key word is <strong>human</strong>. RLHF depends on consistent, reliable human judgment — not just labels.</p>
+
+        <h2>Where RLHF commonly breaks down</h2>
+
+        <h2>1) Treating evaluators like crowd workers</h2>
+        <p>Many teams assume: <strong>“Anyone who can read can evaluate.”</strong></p>
+        <p>In reality, RLHF requires evaluators to detect subtle hallucinations, understand user risk, and apply scoring consistently across thousands of examples. Without training and calibration, human feedback becomes noisy — and noisy feedback degrades models.</p>
+
+        <h2>2) Optimizing for speed over judgment</h2>
+        <p>High throughput looks good on paper. But fast, untrained evaluation often results in overly generous scoring, missed safety risks, and inconsistent preferences.</p>
+        <p>RLHF doesn’t fail loudly — it fails silently, by reinforcing the wrong behaviors.</p>
+
+        <h2>3) No gold data, no calibration</h2>
+        <p>Without gold datasets:</p>
+        <ul>
+          <li>You don’t know if evaluators agree</li>
+          <li>You can’t measure drift</li>
+          <li>You can’t trust improvements</li>
+        </ul>
+        <p>RLHF without calibration is guesswork.</p>
+
+        <h2>What “good RLHF” actually looks like</h2>
+        <p>Effective RLHF programs share a few traits:</p>
+        <ul>
+          <li><strong>Trained evaluators</strong>, not anonymous raters</li>
+          <li><strong>Clear rubrics</strong> for safety, accuracy, and quality</li>
+          <li><strong>Gold datasets</strong> to measure agreement</li>
+          <li><strong>Quality control loops</strong> to catch errors early</li>
+          <li><strong>Conservative scoring</strong> when uncertainty exists</li>
+        </ul>
+        <p>This turns human feedback into a reliable signal — not just “more data.”</p>
+
+        <h2>Why this matters more as models improve</h2>
+        <p>As models get better, the remaining errors become harder to detect, more subtle, and more dangerous. RLHF quality becomes <strong>more</strong> important, not less.</p>
+        <p>The better your model sounds, the more costly a human evaluation mistake becomes.</p>
+
+        <h2>RLHF is a judgment problem, not a labeling problem</h2>
+        <p>The biggest misconception about RLHF is treating it like data labeling.</p>
+        <p><strong>It isn’t.</strong></p>
+        <p>RLHF is about human judgment at scale — and judgment requires training, standards, and accountability.</p>
+
+        <div class="divider"></div>
+        <p><strong>HumanlyAI</strong> designs RLHF workflows around evaluator training, certification, gold data, and consistency — so human feedback improves models instead of introducing hidden risk.</p>
+      </div>
+
+      <div class="divider"></div>
+      <p class="muted">
+        Want help designing or auditing your RLHF process? Email
+        <a href="mailto:founder@humanlyai.us">founder@humanlyai.us</a>.
+      </p>
+    </article>
+
+    <footer class="foot">
+      <div class="divider"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="y"></span> HumanlyAI</div>
+        <div><a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div>
+      </div>
+    </footer>
+  </main>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
