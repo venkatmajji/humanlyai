@@ -109,7 +109,41 @@
     ]
   }
   </script>
+
+  <!-- Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "AI Safety Evaluation",
+    "description": "Human evaluation for AI safety including Safe/Borderline/Unsafe classification, hallucination flagging, factual accuracy scoring, refusal quality checks, and structured reporting for GenAI systems.",
+    "provider": {
+      "@type": "Organization",
+      "name": "HumanlyAI",
+      "url": "https://humanlyai.us",
+      "email": "founder@humanlyai.us"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "serviceType": [
+      "AI Safety Evaluation",
+      "Hallucination Detection",
+      "Refusal Quality Evaluation",
+      "Policy Compliance Evaluation"
+    ],
+    "url": "https://humanlyai.us/ai-safety-evaluation.html",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "USD",
+      "description": "Pilot and ongoing evaluation cycles available. Pricing depends on volume, domain complexity, and QA depth."
+    }
+  }
+  </script>
 </head>
+
 
 <body>
   <header class="container">
