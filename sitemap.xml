@@ -1,7 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- Homepage -->
   <url>
     <loc>https://humanlyai.us/</loc>
-    <priority>1.0</priority>
+    <lastmod>2026-01-10</lastmod>
+    <priority>1.00</priority>
   </url>
+
+  <!-- Blog index -->
+  <url>
+    <loc>https://humanlyai.us/blog/</loc>
+    <lastmod>2026-01-10</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Blog post 1 -->
+  <url>
+    <loc>https://humanlyai.us/blog/fluent-ai-dangerous.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Blog post 2 -->
+  <url>
+    <loc>https://humanlyai.us/blog/rlhf-done-wrong.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
