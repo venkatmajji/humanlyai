@@ -30,4 +30,16 @@
     <priority>0.80</priority>
   </url>
 
+    <url>
+    <loc>https://humanlyai.us/rlhf-services.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <priority>0.90</priority>
+  </url>
+
+  <url>
+    <loc>https://humanlyai.us/ai-safety-evaluation.html</loc>
+    <lastmod>2026-01-10</lastmod>
+    <priority>0.90</priority>
+  </url>
+
 </urlset>
