@@ -22,6 +22,7 @@
   <meta name="twitter:description" content="Certified human feedback for RLHF: preference ranking, structured rubrics, gold datasets, and QA calibration." />
   <meta name="twitter:image" content="https://humanlyai.us/og-image.png" />
 
+  <!-- Styles -->
   <style>
     :root{
       --bg:#0E0E12; --card:#14141B; --text:#FFFFFF; --muted:#9A9DAA; --accent:#5CF2FF;
@@ -60,7 +61,7 @@
     }
   </style>
 
-  <!-- FAQ Schema: RLHF Services -->
+  <!-- FAQ Schema -->
   <script type="application/ld+json">
   {
     "@context":"https://schema.org",
@@ -109,6 +110,39 @@
     ]
   }
   </script>
+
+  <!-- Service Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "RLHF Services",
+    "description": "Certified human feedback for RLHF including pairwise preference ranking, rubric-based scoring, gold datasets, calibration, and QA review for LLM teams.",
+    "provider": {
+      "@type": "Organization",
+      "name": "HumanlyAI",
+      "url": "https://humanlyai.us",
+      "email": "founder@humanlyai.us"
+    },
+    "areaServed": {
+      "@type": "Country",
+      "name": "United States"
+    },
+    "serviceType": [
+      "Reinforcement Learning from Human Feedback",
+      "Human Evaluation",
+      "Model Alignment Evaluation"
+    ],
+    "url": "https://humanlyai.us/rlhf-services.html",
+    "offers": {
+      "@type": "Offer",
+      "availability": "https://schema.org/InStock",
+      "priceCurrency": "USD",
+      "description": "Pilot and ongoing evaluation pods available. Pricing depends on volume, domain complexity, and QA depth."
+    }
+  }
+  </script>
+
 </head>
 
 <body>
