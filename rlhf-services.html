@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>RLHF Services | HumanlyAI — Certified Human Feedback for LLMs</title>
+  <meta name="description" content="HumanlyAI provides certified RLHF services: preference ranking, rubric-based scoring, gold datasets, and QA calibration to improve model alignment and reliability." />
+  <meta name="robots" content="index,follow" />
+  <link rel="canonical" href="https://humanlyai.us/rlhf-services.html" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RLHF Services | HumanlyAI" />
+  <meta property="og:description" content="Certified human feedback for RLHF: preference ranking, structured rubrics, gold datasets, and QA calibration for LLM teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://humanlyai.us/rlhf-services.html" />
+  <meta property="og:image" content="https://humanlyai.us/og-image.png" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="RLHF Services | HumanlyAI" />
+  <meta name="twitter:description" content="Certified human feedback for RLHF: preference ranking, structured rubrics, gold datasets, and QA calibration." />
+  <meta name="twitter:image" content="https://humanlyai.us/og-image.png" />
+
+  <style>
+    :root{
+      --bg:#0E0E12; --card:#14141B; --text:#FFFFFF; --muted:#9A9DAA; --accent:#5CF2FF;
+      --border: rgba(154,157,170,.22);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:8px 0;gap:12px;flex-wrap:wrap}
+    .logo{display:flex;gap:10px;align-items:center;font-weight:700}
+    .logo img{height:32px;width:auto;display:block}
+    .badge{font-size:12px;color:var(--muted);border:1px solid var(--border);padding:4px 10px;border-radius:999px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:transparent;color:var(--text);cursor:pointer}
+    .btn.primary{background:var(--accent);color:#001014;border-color:transparent;font-weight:700}
+    .btn:hover{opacity:.92}
+    .hero{padding:30px 0 10px;display:grid;grid-template-columns:1.25fr .75fr;gap:16px;align-items:start}
+    h1{font-size:40px;line-height:1.12;margin:0 0 10px}
+    h2{font-size:24px;margin:0 0 10px}
+    p{margin:0 0 12px;color:var(--muted)}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:18px}
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    ul{margin:8px 0 0 20px;color:var(--muted)}
+    li{margin:6px 0}
+    .divider{height:1px;background:var(--border);margin:18px 0}
+    .kicker{color:var(--accent);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px;margin:0 0 10px}
+    .tag{font-size:12px;border:1px solid var(--border);color:var(--muted);padding:6px 10px;border-radius:999px}
+    .pill{display:flex;gap:8px;flex-wrap:wrap}
+    .foot{padding:26px 0;color:var(--muted);font-size:13px}
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr}
+      .grid2,.grid3{grid-template-columns:1fr}
+      h1{font-size:34px}
+    }
+  </style>
+
+  <!-- FAQ Schema: RLHF Services -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"FAQPage",
+    "mainEntity":[
+      {
+        "@type":"Question",
+        "name":"What RLHF services does HumanlyAI provide?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"HumanlyAI provides certified human feedback for RLHF, including pairwise preference ranking, rubric-based scoring, rationale capture, and structured outputs suitable for model training and evaluation."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"How do you ensure evaluator consistency for RLHF?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"HumanlyAI uses evaluator training and certification, gold datasets, calibration rounds, and QA review to maintain agreement and consistency over time."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"Do you provide gold datasets for RLHF?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Yes. HumanlyAI can create gold tasks and ground-truth benchmarks, then use them to measure agreement, detect drift, and calibrate evaluators."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"What do clients need to supply to start an RLHF project?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Typically clients supply prompts and model outputs (or candidate responses), evaluation goals, and any constraints or policies. HumanlyAI provides rubrics, trained evaluators, QA, and structured results."
+        }
+      },
+      {
+        "@type":"Question",
+        "name":"How fast can you run an RLHF pilot?",
+        "acceptedAnswer":{
+          "@type":"Answer",
+          "text":"Pilot timelines depend on volume and QA depth, but many pilots can be completed within 7–14 days once scope and rubrics are finalized."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+
+<body>
+  <header class="container">
+    <div class="nav">
+      <a class="logo" href="/" aria-label="HumanlyAI Home">
+        <img src="/logo.png" alt="HumanlyAI logo" />
+        <span class="badge">RLHF Services</span>
+      </a>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <a class="btn" href="/">Home</a>
+        <a class="btn" href="/blog/">Blog</a>
+        <a class="btn primary" href="#contact">Request a Pilot</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <p class="kicker">Certified human feedback for LLMs</p>
+        <h1>RLHF Services for Reliable, Aligned AI</h1>
+        <p>
+          HumanlyAI provides <strong style="color:#fff">trained and certified evaluators</strong> for RLHF preference data,
+          rubric-based scoring, and gold dataset calibration — so your model improves reliably, not randomly.
+        </p>
+        <div class="pill" style="margin-top:10px">
+          <span class="tag">Pairwise Preference Ranking</span>
+          <span class="tag">Rubric-Based Scoring</span>
+          <span class="tag">Gold Datasets</span>
+          <span class="tag">QA & Calibration</span>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:16px">
+          <a class="btn primary" href="#contact">Request RLHF Support</a>
+          <a class="btn" href="#how">See How It Works</a>
+        </div>
+        <p style="margin-top:10px;font-size:13px">
+          Typical pilot turnaround: <strong style="color:#fff">7–14 days</strong> (scope dependent).
+        </p>
+      </div>
+
+      <aside class="card">
+        <p class="kicker">Best for</p>
+        <p style="margin:0 0 10px;color:var(--muted)">
+          Teams shipping copilots/assistants who need consistent human preferences, quality scoring, and regression checks.
+        </p>
+        <div class="divider"></div>
+        <p style="margin:0;color:var(--muted)">
+          If you update your model frequently, your RLHF pipeline needs a repeatable human feedback engine.
+        </p>
+      </aside>
+    </section>
+
+    <section class="card" id="services" style="margin-top:14px">
+      <p class="kicker">What we deliver</p>
+      <div class="grid2" style="margin-top:10px">
+        <div class="card">
+          <h2 style="margin:0 0 6px">Preference Data</h2>
+          <p>Pairwise comparisons and preference ranking with consistent guidance.</p>
+          <ul>
+            <li>Two-response (A/B) preference ranking</li>
+            <li>Optional rationale capture</li>
+            <li>Task-specific rubrics</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 style="margin:0 0 6px">Quality Scoring</h2>
+          <p>Structured scoring to identify regressions and improvement opportunities.</p>
+          <ul>
+            <li>Factual accuracy scoring</li>
+            <li>Tone & professionalism</li>
+            <li>Overall quality scoring</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 style="margin:0 0 6px">Gold Datasets</h2>
+          <p>Ground truth tasks to calibrate evaluators and measure agreement.</p>
+          <ul>
+            <li>Gold task creation</li>
+            <li>Agreement thresholds</li>
+            <li>Drift detection & recalibration</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h2 style="margin:0 0 6px">QA & Governance</h2>
+          <p>Quality gates to protect your signal.</p>
+          <ul>
+            <li>Reviewer audits and spot checks</li>
+            <li>Rubric updates over time</li>
+            <li>Structured output delivery (CSV/JSON)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="how" style="margin-top:18px">
+      <p class="kicker">How it works</p>
+      <h2>End-to-end RLHF workflow</h2>
+      <div class="grid2" style="margin-top:12px">
+        <div class="card">
+          <p><strong>1) Scope & inputs</strong></p>
+          <p>You share prompts, candidate outputs, policies, and success criteria.</p>
+        </div>
+        <div class="card">
+          <p><strong>2) Rubrics & calibration</strong></p>
+          <p>We define rubrics and run calibration rounds to align evaluators.</p>
+        </div>
+        <div class="card">
+          <p><strong>3) Evaluation + QA</strong></p>
+          <p>Evaluators score and compare outputs; QA reviews agreement and issues.</p>
+        </div>
+        <div class="card">
+          <p><strong>4) Delivery</strong></p>
+          <p>We deliver structured results for training loops, reporting, and regression checks.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:18px">
+      <p class="kicker">Why HumanlyAI</p>
+      <h2>Trained, certified evaluators — not crowd work</h2>
+      <div class="grid3" style="margin-top:12px">
+        <div class="card">
+          <p><strong>Certification gate</strong></p>
+          <p>Training + quiz + gold dataset agreement before client work.</p>
+        </div>
+        <div class="card">
+          <p><strong>Consistency over speed</strong></p>
+          <p>We optimize for reliable signal and safety, not fast clicking.</p>
+        </div>
+        <div class="card">
+          <p><strong>Built for iteration</strong></p>
+          <p>Ongoing pods for continuous evaluation as your model evolves.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Visible FAQ section (recommended to match schema) -->
+    <section class="card" id="faq" style="margin-top:18px">
+      <p class="kicker">FAQ</p>
+      <h2>Common questions about RLHF services</h2>
+      <div class="grid2" style="margin-top:12px">
+        <div class="card">
+          <p><strong>What RLHF services does HumanlyAI provide?</strong></p>
+          <p>Preference ranking, rubric-based scoring, rationales (optional), gold datasets, and QA calibration with structured outputs.</p>
+        </div>
+        <div class="card">
+          <p><strong>How do you ensure evaluator consistency?</strong></p>
+          <p>Evaluator certification, gold datasets, calibration rounds, reviewer audits, and agreement monitoring.</p>
+        </div>
+        <div class="card">
+          <p><strong>What do we need to supply?</strong></p>
+          <p>Prompts and outputs (or candidates), evaluation goals, and any constraints or policies. We provide the workflow, rubrics, and results.</p>
+        </div>
+        <div class="card">
+          <p><strong>How fast can a pilot run?</strong></p>
+          <p>Many pilots can complete in 7–14 days after scope and rubric alignment (volume dependent).</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" id="contact" style="margin-top:18px">
+      <p class="kicker">Contact</p>
+      <h2>Request an RLHF pilot</h2>
+      <p>Email us with your use case, domain, and approximate volume. We’ll reply with a pilot scope.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:10px">
+        <a class="btn primary"
+           href="mailto:founder@humanlyai.us?subject=HumanlyAI%20RLHF%20Pilot%20Request&body=Hi%20HumanlyAI%2C%0A%0AUse%20case%3A%0ADomain%3A%0AEval%20needs%3A%20(RLHF%20preference%2C%20quality%20scoring%2C%20gold%20data)%0AVolume%3A%0ATimeline%3A%0A%0AThanks%2C%0A">
+          Email Founder
+        </a>
+        <a class="btn" href="/blog/">Read the Blog</a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      <div class="divider"></div>
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap">
+        <div>© <span id="y"></span> HumanlyAI</div>
+        <div>
+          <a href="/privacy.html">Privacy</a> ·
+          <a href="/terms.html">Terms</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
